@@ -73,7 +73,7 @@ fn validate_by_position(policy: &(u32, u32, char), password: &str) -> bool {
 /// Determines if a password is valid given a policy and a validation strategy
 /// 
 /// If the strategy is `Frequency` then the policy is interpreted as frequency ranges.
-/// If the policy is `Position` then the policy is treated is indices into the password
+/// If the strategy is `Position` then the policy is treated is indices into the password
 fn is_password_valid(policy: &(u32, u32, char), password: &str, strategy: Strategy) -> bool {    
     match strategy {
         Strategy::Frequency => validate_by_frequency(policy, password),

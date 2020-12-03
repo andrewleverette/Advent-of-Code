@@ -11,6 +11,10 @@ where
     Ok(io::BufReader::new(file).lines())
 }
 
+/// Parses input into a vector of tuples
+///
+/// The first entry is the policy: a tuple containing the two numbers and character
+/// The second entry is the password
 fn parse_input(filename: &str) -> Vec<((u32, u32, char), String)> {
     let mut results = Vec::new();
 
@@ -40,11 +44,13 @@ fn parse_input(filename: &str) -> Vec<((u32, u32, char), String)> {
     results
 }
 
+/// Helps to determine which validation method to use
 enum Strategy {
     Frequency,
     Position,
 }
 
+/// Validates a password using the policy as a frequency range
 fn validate_by_frequency(policy: &(u32, u32, char), password: &str) -> bool {
     let mut character_count = 0;
 
@@ -57,6 +63,7 @@ fn validate_by_frequency(policy: &(u32, u32, char), password: &str) -> bool {
     policy.0 <= character_count && character_count <= policy.1
 }
 
+/// Validates a password using the policy as indices in the password
 fn validate_by_position(policy: &(u32, u32, char), password: &str) -> bool {
     let characters: Vec<char> = password.chars().collect();
 
@@ -64,6 +71,7 @@ fn validate_by_position(policy: &(u32, u32, char), password: &str) -> bool {
 }
 
 /// Determines if a password is valid given a policy and a validation strategy
+/// 
 /// If the strategy is `Frequency` then the policy is interpreted as frequency ranges.
 /// If the policy is `Position` then the policy is treated is indices into the password
 fn is_password_valid(policy: &(u32, u32, char), password: &str, strategy: Strategy) -> bool {    
@@ -73,6 +81,7 @@ fn is_password_valid(policy: &(u32, u32, char), password: &str, strategy: Strate
     }
 }
 
+/// Counts how many passwords are valid using a frequency validation strategy
 pub fn puzzle_one_solution(input: &[((u32, u32, char), String)]) -> u32 {
     let mut valid_count = 0;
 
@@ -85,6 +94,7 @@ pub fn puzzle_one_solution(input: &[((u32, u32, char), String)]) -> u32 {
     valid_count
 }
 
+/// Counts how many passwords are valid using a position validation strategy
 pub fn puzzle_two_solution(input: &[((u32, u32, char), String)]) -> u32 {
     let mut valid_count = 0;
 

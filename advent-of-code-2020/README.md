@@ -8,3 +8,4 @@
 | [Day 4](./day-4) | Passport Processing | [📄](./day-4/src/main.rs) |
 | [Day 5](./day-5) | Binary Boards       | [📄](./day-5/src/main.rs) |
 | [Day 6](./day-6) | Custom Customs      | [📄](./day-6/src/main.rs) |
+| [Day 7](./day-7) | Handy Haversacks    | [📄](./day-7/src/main.rs) |
